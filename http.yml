@@ -6,7 +6,7 @@
   
 
   tasks:
-  - name: Install Apaches
+  - name: Install Apache
     yum: pkg=httpd state=latest
   - name: Copying the demo file
     template: src=/etc/ansible/index.html dest=/var/www/html
