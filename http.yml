@@ -1,5 +1,8 @@
 ---
 - hosts: localhost
+  remote_user: ansadmin
+  become: yes
+  become_method: su
   
 
   tasks:
