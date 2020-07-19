@@ -1,5 +1,5 @@
 ---
 - hosts: 192.168.1.225
   tasks:
-   - name: print messages
+   - name: print message
      debug: msg="this is a demo for Jenkins and ansible!!"
