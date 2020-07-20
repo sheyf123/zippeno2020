@@ -1,6 +1,6 @@
 - hosts: localhost
   tasks:
-  - name: ansible create directory example
+  - name: ansible create directory examples
     file:
       path: /home/ansadmin/demo_directory
       state: directory
