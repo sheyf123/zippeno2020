@@ -1,5 +1,6 @@
----
-- hosts: 192.168.1.225
+- hosts: localhost
   tasks:
-   - name: print messages
-     debug: msg="this is a demo for Jenkins and ansible!!"
+  - name: ansible create directory example
+    file:
+      path: /home/ansadmin/demo_directory
+      state: directory
