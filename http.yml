@@ -2,5 +2,5 @@
   tasks:
   - name: ansible create directory example
     file:
-      path: /home/ansadmin/demo_for_irene
+      path: /home/ansadmin/demo_for_solo
       state: directory
