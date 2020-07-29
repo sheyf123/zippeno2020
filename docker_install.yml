@@ -3,7 +3,7 @@
 user: ansadmin
 become: yes
 tasks:
-- name: "Installing Docker Prerequisite packages"
+- name: "Installing Docker Prerequisite package"
 yum:
 name: "{{ item }}"
 state: latest
