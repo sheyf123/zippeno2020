@@ -1,7 +1,7 @@
 ---
 - hosts: localhost
-user: ansadmin
-become: yes
+  user: ansadmin
+  become: yes
 - name: Install docker
   gather_facts: No
   hosts: default
