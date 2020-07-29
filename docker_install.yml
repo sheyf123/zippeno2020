@@ -1,6 +1,6 @@
 ---
 - name: Install docker
-  hosts: default
+  hosts: localhost
 
   tasks:
     - name: Install yum utilss
