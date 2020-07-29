@@ -1,42 +1,21 @@
 ---
-- name: Install Dockers
-  gather_facts: No
-  become: yes
-  hosts: 192.168.1.225
- 
+- name: This sets up an httpd webserver
+  hosts: localhost
   tasks:
-    - name: Install yum utils
-      yum:
-        name: yum-utils
-        state: latest
- 
-    - name: Install device-mapper-persistent-data
-      yum:
-        name: device-mapper-persistent-data
-        state: latest
- 
-    - name: Install lvm2
-      yum:
-        name: lvm2
-        state: latest
- 
-    - name: Add Docker repo
-      get_url:
-        url: https://download.docker.com/linux/centos/docker-ce.repo
-        dest: /etc/yum.repos.d/docker-ce.repo
-      become: yes
- 
-    - name: Install Docker
-      package:
-        name: docker-ce
-        state: latest
-      become: yes
- 
-    - name: Start Docker service
-      service:
-        name: docker
-        state: started
-        enabled: yes
-      become: yes
- 
-    
+  - name: Install apache packages 
+    yum:
+      name: httpd
+      state: present
+  - name: ensure httpd is running
+    service:
+      name: httpd 
+      state: started
+  - name: Open port 80 for http access
+    firewalld:
+      service: http
+      permanent: true
+      state: enabled
+  - name: Restart the firewalld service to load in the firewall changes
+    service: 
+      name: firewalld 
+      state: restarted
