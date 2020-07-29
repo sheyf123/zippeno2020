@@ -11,7 +11,7 @@
  
     - name: Install device-mapper-persistent-data
       yum:
-        name: device-mapper-persistent-data
+        name: 
         state: latest
  
     - name: Install lvm2
@@ -19,11 +19,7 @@
         name: lvm2
         state: latest
  
-    - name: Add Docker repo
-      get_url:
-        url: https://download.docker.com/linux/centos/docker-ce.repo
-        dest: /etc/yum.repos.d/docker-ce.repo
-      become: yes
+    
  
     - name: Install Docker
       package:
@@ -38,9 +34,4 @@
         enabled: yes
       become: yes
  
-    - name: Add user artem to docker group
-      user:
-        name: artem
-        groups: docker
-        append: yes
-      become: yes
+    
