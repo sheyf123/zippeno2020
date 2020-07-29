@@ -9,11 +9,6 @@
         name: yum-utils
         state: latest
 
-    - name: Install device-mapper-persistent-data
-      yum:
-        name: device-mapper-persistent-data
-        state: latest
-
     - name: Install lvm2
       yum:
         name: lvm2
