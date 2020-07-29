@@ -1,26 +1,26 @@
 ---
- - hosts: localhost
-   
-   tasks:
-    - name: Fetch docker version
-      shell: docker version 2>&1 | grep Version | awk '{print $2}'
-      register: docker_version 
+- hosts: localhost
 
-    - name: Check if docker is installed, download binary otherwise
-      command: curl -O https://download.docker.com/linux/static/stable/x86_64/docker-17.12.0-ce.tgz
-      when: docker_version.stdout == ''
-
-    - name: Extract binary
-      unarchive: 
-        src: /root/docker-17.12.0-ce.tgz
-        dest: /root/
-        remote_src: yes
-      when: docker_version.stdout == ''
-
-    - name: start docker
-      shell: sudo /root/docker/dockerd &
-      register: tmp
-
-    - name: Debug
-      debug: 
-        var: tmp
+tasks:
+- name: "Installing Docker Prerequisite packages"
+yum:
+name: "{{ item }}"
+state: latest
+with_items:
+- yum-utils
+- device-mapper-persistent-data
+- lvm2
+- name: "Configuring docker-ce repo"
+get_url:
+url: https://download.docker.com/linux/centos/docker-ce.repo
+dest: /etc/yum.repos.d/docker-ce.repo
+mode: 0644
+- name: " Installing Docker latest version"
+yum:
+name: docker-ce
+state: present
+- name: " Starting and Enabling Docker service"
+service:
+name: docker
+state: started
+enabled: yes
