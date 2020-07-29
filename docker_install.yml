@@ -1,7 +1,8 @@
 ---
 - name: Install Docker
   gather_facts: No
-  hosts: all
+  become: yes
+  hosts: 192.168.1.225
  
   tasks:
     - name: Install yum utils
