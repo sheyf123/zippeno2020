@@ -3,7 +3,7 @@
   hosts: default
 
   tasks:
-    - name: Install yum utils
+    - name: Install yum utilss
       yum:
         name: yum-utils
         state: latest
